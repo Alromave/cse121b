@@ -56,40 +56,6 @@ const reset = () => {
 };
 
 
-
-/* filterTemples Function */
-/*const filterTemples = (temples) => {
-    reset();
-}
-const filter = document.getElementById("filtered").value;
-switch(filter) {
-    case "all":
-        break;
-    case "recent":
-        break;
-    case "alphabetical":
-        break;
-    case "visited":
-        break;
-    default:
-
-};
-switch(filter) {
-    case "utah":
-        displayTemples(temples.filter(temple => temple.location.includes("utah")));
-        break;
-    case "nonutah":
-        displayTemples(temples.filter(temple => temple.location.includes("nonutah")));
-        break;
-    case "order":
-        displayTemples(temples.filter(temple => new Date(temple.dedicatedDate) < new Date(1950, 0, 1)));
-        break;
-    case "all":
-        displayTemples(temples);
-        break;
-    default:
-        console.error("Invalid filter option");
-}*/
 const filterTemples = function(temples){
     reset();
     let filter = document.querySelector("#filtered").value;
