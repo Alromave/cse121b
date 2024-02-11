@@ -32,6 +32,7 @@ const getTemples = async() => {
         const response = await fetch("https://byui-cse.github.io/cse121b-ww-course/resources/temples.json");
         const templeData = await response.json();
         templeList = templeData;
+        displayTemples(templeList);
 
     }
     catch (error) {
@@ -39,18 +40,14 @@ const getTemples = async() => {
     }
 
 };
-getTemples()
-    .then(() => console.log(templeList))
-    .catch(error => console.error("Error:", error));
+
 
 
 
 
  
 /* reset Function */
-const clearTemples = () => {
-    templesElement.innerHTML = "";
-};
+
 const reset = () => {
     const articleElements = templesElement.querySelectorAll("article");
     articleElements.forEach(article => {
@@ -116,8 +113,7 @@ const filterTemples = function(temples){
 
 
 /* Event Listener */
-const filteredElement = document.getElementById("filtered");
-document.querySelector("#filtered").addEventListener("change", () => { filterTemples(templeList) });
+document.getElementById("filtered").addEventListener("change", () => { filterTemples(templeList) });
 
 getTemples();
 
