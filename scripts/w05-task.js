@@ -5,16 +5,17 @@ const templesElement = document.getElementById("temples");
 let templeList = [];
 
 /* async displayTemples Function */
-const displayTemples = (templeList) => {
-    templeList.forEach(temple => {
+const displayTemples = (temples) => {
+    temples.forEach(temple => {
         const articleElement = document.createElement("article");
-        const headingElement = document.createElement("h3");
-        headingElement.textContent = temple.templeName;
-        const imageElement = document.createElement("img");
-        imageElement.src = temple.imageUrl;
-        imageElement.alt = temple.location;
-        articleElement.appendChild(headingElement);
-        articleElement.appendChild(imageElement);
+        const h3Element = document.createElement("h3");
+        h3Element.textContent = temple.templeName;
+
+        const imgElement = document.createElement("img");
+        imgElement.src = temple.imageUrl;
+        imgElement.alt = temple.location;
+        articleElement.appendChild(h3Element);
+        articleElement.appendChild(imgElement);
         templesElement.appendChild(articleElement);
     });
 
@@ -52,7 +53,7 @@ const clearTemples = () => {
 };
 const reset = () => {
     const articleElements = templesElement.querySelectorAll("article");
-    articleElement.forEach(article => {
+    articleElements.forEach(article => {
         article.remove();
     });
 };
@@ -60,7 +61,7 @@ const reset = () => {
 
 
 /* filterTemples Function */
-const filterTemples = (temples) => {
+/*const filterTemples = (temples) => {
     reset();
 }
 const filter = document.getElementById("filtered").value;
@@ -91,9 +92,26 @@ switch(filter) {
         break;
     default:
         console.error("Invalid filter option");
+}*/
+const filterTemples = function(temples){
+    reset();
+    let filter = document.querySelector("#filtered").value;
+    switch (filter) {
+        case "utah":
+            displayTemples(temples.filter(temple => temple.location.includes("Utah")));
+            break;
+        case "nonutah":
+            displayTemples(temples.filter(temple => temple.location.includes("Utah")));
+            breack;
+        case "older":
+            displayTemples(temples.filter(temple => new Date (temple.dedicated).getFullYear() < new Date(1950,0,1).getFullYear()));
+            break;
+        default:
+            displayTemples(temples);
+            break;
+    }
 }
-
-
+ 
 
 
 
